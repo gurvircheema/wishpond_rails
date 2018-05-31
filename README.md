@@ -1,24 +1,21 @@
-# README
+# Small Ruby on Rails for Wishpond
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app uses rails 5.2. This is so that we can use `activestorage` functionality added in this rails version to upload and store images.
 
-Things you may want to cover:
+# Setup
 
-* Ruby version
+```shell
+gem install rails -v 5.2
+rails -v # should show 5.2
+cd /wishpond_rails # if you are not currently in this directory
+bundle install
+rails db:create
+rails db:migrate
+rails s
+```
 
-* System dependencies
+### Notes
 
-* Configuration
+This app use `ruby 2.5.1`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For production deployment, please replace `config/credentials.yml.enc` with your own credentials file. Make sure your credentials file has aws_access_key, aws_secret_key, region and bucket name

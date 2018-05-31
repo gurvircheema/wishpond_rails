@@ -1,0 +1,26 @@
+%h1 Plays 
+#timerTable{ data: { images: url_array(@random_10_images) } }
+  .row
+    .col-sm-3 Timer
+    .col-sm-6 Current Image
+    .col-sm-3 Action
+  .row
+    .col-sm-3.text-center
+      %h1#currentTimer 10
+    .col-sm-6
+      - if @random_10_images.count > 0
+        %img.img-responsive#currentImage{height: '300px', src: "#{url_for(@random_10_images.first)}"}
+      - else
+        %p.alert.alert-info There are no images uploaded.
+    .col-sm-3
+      %button.btn.btn-success#storeImage{class: (if @random_10_images.count > 0 then 'btn-success' else 'btn-secondary disabled' end)} Store current timer and photo
+%hr
+.table-responsive
+  %table.table.table-bordered#storedPlays
+    %tr
+      %th Timer
+      %th Image
+    - @plays.each do |play|
+      %tr 
+        %td= play.timer
+        %td= image_tag(play.url, height: '200px', class: 'img')

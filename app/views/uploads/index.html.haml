@@ -1,0 +1,17 @@
+%h1 Upload Images
+= form_for :upload, url: uploads_path do |f|
+  .form-group
+    = f.label :images
+    = f.file_field :images, multiple: true, class: 'form-control-file'
+  .actions
+    = f.submit 'Upload', class: 'btn btn-primary'
+%hr
+%h1
+  Images
+  %span.lead.text-muted Uploaded
+- if @images
+  .row
+    - @images.each do |image|
+      .col-sm-3
+        .card
+          = image_tag(image, height: '200', class: 'card-img-top img-fluid')
